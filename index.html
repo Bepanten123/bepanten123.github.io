@@ -3,126 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kabachok | Bio</title>
+<title>Kabachok</title>
 <style>
-  /* Фон видео */
-  #bgVideo {
-    position: fixed;
-    top: 0; left: 0;
-    min-width: 100%; min-height: 100%;
-    object-fit: cover;
-    z-index: -1;
-  }
-
-  /* Общий стиль, как в консоли */
-  body {
-    font-family: "Courier New", monospace;
-    color: #00ff00;
-    background: black;
+/* Фон */
+body {
     margin: 0;
-    padding: 20px;
-  }
-
-  .container {
-    max-width: 700px;
-    margin: auto;
-    background: rgba(0,0,0,0.7);
-    padding: 20px;
-    border: 2px solid #00ff00;
-    border-radius: 8px;
-  }
-
-  h1, h2, h3 {
-    margin: 5px 0;
-  }
-
-  hr {
-    border: 1px dashed #00ff00;
-  }
-
-  .tg-button {
-    display: inline-block;
-    padding: 8px 12px;
-    margin-top: 10px;
+    padding: 0;
+    font-family: monospace, monospace;
+    background-image: url('фон.jpg'); /* положи сюда свою картинку */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: #00ff00;
-    border: 1px solid #00ff00;
-    border-radius: 4px;
+    line-height: 1.5;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* Центрирование контента */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.8); /* тёмный контейнер, чтобы текст читался */
+    border-radius: 10px;
+}
+
+/* Ссылки */
+a {
+    color: #00ffff;
     text-decoration: none;
-  }
+}
+a:hover {
+    text-decoration: underline;
+}
 
-  .card {
-    margin-top: 10px;
-    cursor: pointer;
-  }
-
-  .toast {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: #111;
-    color: #0f0;
-    padding: 10px;
-    border: 1px solid #0f0;
-    border-radius: 5px;
-    display: none;
-    z-index: 999;
-  }
+/* Мобильная адаптация */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+}
 </style>
 </head>
 <body>
-
-<video autoplay muted loop id="bgVideo">
-  <source src="фон.mp4" type="video/mp4">
-  Ваш браузер не поддерживает видео.
-</video>
-
 <div class="container">
-  <h1>⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀</h1>
-  <hr>
-  <h3>🗣️ LANGUAGES:</h3>
-  <p>• Russian, Ukrainian (fluent)<br>• English (a bit)</p>
-
-  <h3>🎮 HOBBIES:</h3>
-  <p>• Video Games, Coding</p>
-
-  <h3>🎶 MUSIC:</h3>
-  <p>• Currently listening: Sektor Gaza</p>
-
-  <h3>💻 TECH:</h3>
-  <p>• My loyal userbot: Heroku🪐<br>
-     • Telegram Client: exteraGram [exteraGram.app]</p>
-
-  <h3>🌐 CONTACTS:</h3>
-  <a href="https://t.me/jvloq" class="tg-button">Telegram: @jvloq</a>
-
-  <h3>💸 SUPPORT:</h3>
-  <div class="card" onclick="copyCard('2200702031583094')">Tinkoff Bank: 2200702031583094</div>
-
-  <h3>🤔 Why "kabachok" (zucchini)?</h3>
-  <p>Nobody knows, not even I!</p>
+⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀<br>
+─────────────────────────<br>
+🗣️ LANGUAGES:<br>
+  • Russian, Ukrainian (fluent)<br>
+  • English (a bit)<br>
+─────────────────────────<br>
+🎮 HOBBIES:<br>
+  • Video Games, Coding<br>
+🎶 MUSIC:<br>
+  • Currently listening: Sektor Gaza (one of my favorite bands!)<br>
+─────────────────────────<br>
+💻 TECH:<br>
+  • My loyal userbot: Heroku🪐<br>
+  • Telegram Client: exteraGram [ <a href="https://exteragram.app" target="_blank">exteraGram.app</a> ]<br>
+─────────────────────────<br>
+🌐 CONTACTS:<br>
+  • Telegram: <a href="https://t.me/jvloq" target="_blank">@jvloq</a><br>
+─────────────────────────<br>
+💸 SUPPORT:<br>
+  • Tinkoff Bank: 2200702031583094<br>
+─────────────────────────<br>
+🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!<br>
 </div>
-
-<!-- Музыка -->
-<audio id="bgMusic" controls style="margin-top:20px;">
-  <source src="dark-atmospheric.mp3" type="audio/mpeg">
-  Ваш браузер не поддерживает аудио.
-</audio>
-
-<!-- Тоаст -->
-<div class="toast" id="toast">Сябки 😋</div>
-
-<script>
-  // Копирование карты с уведомлением
-  function copyCard(cardNumber){
-    navigator.clipboard.writeText(cardNumber).then(()=>{
-      const toast = document.getElementById('toast');
-      toast.style.display = 'block';
-      setTimeout(()=>{ toast.style.display = 'none'; }, 2000);
-    });
-  }
-
-  // Автозапуск музыки по кнопке можно добавить, если хочешь
-</script>
-
 </body>
 </html>
