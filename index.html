@@ -1,158 +1,128 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>kabachok</title>
+<title>Kabachok Site</title>
 <style>
-    /* Фон */
     body {
         margin: 0;
         padding: 0;
+        font-family: monospace;
+        color: #fff;
         background: url('фон.jpg') no-repeat center center fixed;
         background-size: cover;
-        font-family: 'Courier New', monospace;
-        color: #fff;
     }
 
-    /* Затемнённый оверлей для читаемости текста */
-    .overlay {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.65);
-        z-index: 0;
-    }
-
-    /* Контейнер с контентом */
-    .container {
-        position: relative;
-        z-index: 1;
-        max-width: 800px;
-        margin: 50px auto;
+    .bio-container {
+        border: 2px solid #8A2BE2; /* фиолетовая рамка */
         padding: 20px;
-        border: 2px solid #b200ff; /* фиолетовая окантовка */
+        max-width: 90%;
+        overflow-wrap: break-word; /* текст не вылазит */
+        box-sizing: border-box;
+        margin: 50px auto;
+        background-color: rgba(0,0,0,0.6);
         border-radius: 10px;
-        background: rgba(0,0,0,0.3);
     }
 
-    /* Био */
-    pre {
-        font-size: 16px;
-        line-height: 1.5;
-        margin: 0;
+    .footer-message {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0,0,0,0.8);
+        border: 2px solid #8A2BE2;
+        padding: 15px;
+        border-radius: 10px;
+        max-width: 90%;
+        font-family: monospace;
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        box-sizing: border-box;
+        animation: typing 3s steps(30) 1;
     }
 
-    /* Музыка на фоне (скрываем элементы плеера) */
-    audio {
-        display: none;
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
     }
 
-    /* Кнопка my channel */
-    .my-channel {
+    .music {
+        display: none; /* невидимый плеер, играет на фоне */
+    }
+
+    .tinkoff-card {
+        cursor: pointer;
+        border: 1px dashed #8A2BE2;
+        padding: 10px;
+        border-radius: 5px;
         display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: #b200ff;
+        margin-top: 10px;
+    }
+
+    .tg-button {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #0088cc;
+        border-radius: 5px;
         color: #fff;
         text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-    }
-
-    /* Кликабельная карта Тинькофф */
-    .card {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: #222;
-        color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-        border-left: 3px solid #b200ff;
-        font-family: 'Courier New', monospace;
-    }
-
-    /* Сообщение снизу (анимация печати) */
-    .message-box {
-        margin-top: 20px;
-        max-width: 400px;
-        padding: 10px;
-        background: rgba(255,255,255,0.1);
-        border-left: 3px solid #b200ff;
-        color: #fff;
-        font-family: 'Courier New', monospace;
-        white-space: pre-wrap;
-        overflow: hidden;
-        min-height: 50px;
-        margin-bottom: 20px;
+        margin-top: 10px;
     }
 </style>
 </head>
 <body>
 
-<div class="overlay"></div>
+<audio class="music" src="dark-atmospheric.mp3" autoplay loop></audio>
 
-<div class="container">
-    <pre>
-⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀
-─────────────────────────
-🗣️ LANGUAGES:
-• Russian, Ukrainian (fluent)
-• English (a bit)
-─────────────────────────
-🎮 HOBBIES:
-• Video Games, Coding
-🎶 MUSIC:
-• Currently listening: Sektor Gaza
-─────────────────────────
-💻 TECH:
-• My loyal userbot: Heroku🪐
-• Telegram Client: exteraGram [ exteraGram.app ]
-─────────────────────────
-🌐 CONTACTS:
-• Telegram: @jvloq
-─────────────────────────
-💸 SUPPORT:
-• Tinkoff Bank: <span class="card" onclick="copyCard()">2200702031583094</span>
-─────────────────────────
-🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!
-    </pre>
-
-    <a href="https://t.me/mcFimozzzzz" target="_blank" class="my-channel">my channel</a>
-
-    <div class="message-box" id="msg"></div>
+<div class="bio-container">
+⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀<br>
+─────────────────────────<br>
+🗣️ LANGUAGES:<br>
+• Russian, Ukrainian (fluent)<br>
+• English (a bit)<br>
+─────────────────────────<br>
+🎮 HOBBIES:<br>
+• Video Games, Coding<br>
+🎶 MUSIC:<br>
+• Currently listening: Sektor Gaza (one of my favorite bands!)<br>
+─────────────────────────<br>
+💻 TECH:<br>
+• My loyal userbot: Heroku🪐<br>
+• Telegram Client: exteraGram [ exteraGram.app ]<br>
+─────────────────────────<br>
+🌐 CONTACTS:<br>
+• Telegram: @jvloq<br>
+─────────────────────────<br>
+💸 SUPPORT:<br>
+<div class="tinkoff-card" onclick="copyCard()">2200702031583094</div>
+─────────────────────────<br>
+🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!<br>
+<a class="tg-button" href="https://t.me/mcFimozzzzz" target="_blank">my channel</a>
 </div>
 
-<!-- Аудио на фоне -->
-<audio id="bgmusic" src="dark-atmospheric.mp3" autoplay loop></audio>
+<div class="footer-message" id="footerMsg"></div>
 
 <script>
-    // Анимация печати
-    const message = 'саламчик 😨';
-    const msgBox = document.getElementById('msg');
+    // Копирование карты в буфер
+    function copyCard() {
+        navigator.clipboard.writeText("2200702031583094");
+        alert("сябки 😋");
+    }
+
+    // Анимация печати сообщения внизу
+    const msg = "саламчик 😨";
+    const footer = document.getElementById("footerMsg");
     let i = 0;
-    function typeWriter() {
-        if (i < message.length) {
-            msgBox.innerHTML += message.charAt(i);
+    function typeMessage() {
+        if(i < msg.length){
+            footer.textContent += msg[i];
             i++;
-            setTimeout(typeWriter, 150);
+            setTimeout(typeMessage, 150);
         }
     }
-    typeWriter();
-
-    // Копирование карты
-    function copyCard() {
-        const cardNumber = '2200702031583094';
-        navigator.clipboard.writeText(cardNumber).then(() => {
-            alert('сябки 😋');
-        });
-    }
+    typeMessage();
 </script>
 
 </body>
 </html>
-
-
-
-	
