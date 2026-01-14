@@ -3,126 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kabachok Site</title>
+<title>Kabachok</title>
 <style>
     body {
         margin: 0;
         padding: 0;
         font-family: monospace;
-        color: #fff;
         background: url('фон.jpg') no-repeat center center fixed;
         background-size: cover;
+        color: #fff;
+        overflow-x: hidden;
     }
-
-    .bio-container {
-        border: 2px solid #8A2BE2; /* фиолетовая рамка */
-        padding: 20px;
-        max-width: 90%;
-        overflow-wrap: break-word; /* текст не вылазит */
-        box-sizing: border-box;
+    .container {
+        max-width: 800px;
         margin: 50px auto;
-        background-color: rgba(0,0,0,0.6);
-        border-radius: 10px;
+        padding: 30px;
+        border: 3px solid #8a2be2;
+        background-color: rgba(0,0,0,0.7);
+        border-radius: 12px;
     }
-
-    .footer-message {
-        position: fixed;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(0,0,0,0.8);
-        border: 2px solid #8A2BE2;
-        padding: 15px;
-        border-radius: 10px;
-        max-width: 90%;
-        font-family: monospace;
-        white-space: pre-wrap;
-        overflow-wrap: break-word;
-        box-sizing: border-box;
-        animation: typing 3s steps(30) 1;
-    }
-
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-    }
-
-    .music {
-        display: none; /* невидимый плеер, играет на фоне */
-    }
-
-    .tinkoff-card {
-        cursor: pointer;
-        border: 1px dashed #8A2BE2;
-        padding: 10px;
-        border-radius: 5px;
+    h1, h2, h3, p { margin: 10px 0; }
+    .typing {
         display: inline-block;
-        margin-top: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: .15em solid #fff;
+        animation: typing 3s steps(30, end), blink .5s step-end infinite alternate;
+        font-size: 18px;
     }
-
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink { 50% { border-color: transparent; } }
     .tg-button {
         display: inline-block;
-        padding: 10px 15px;
-        background-color: #0088cc;
-        border-radius: 5px;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #8a2be2;
         color: #fff;
         text-decoration: none;
-        margin-top: 10px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    .tg-button:hover { background: #6f1fb5; }
+    audio { display: none; }
+    .message-box {
+        margin-top: 30px;
+        padding: 15px;
+        background: rgba(0,0,0,0.6);
+        border-left: 4px solid #8a2be2;
+        border-radius: 6px;
+        width: fit-content;
     }
 </style>
 </head>
 <body>
-
-<audio class="music" src="dark-atmospheric.mp3" autoplay loop></audio>
-
-<div class="bio-container">
-⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀<br>
-─────────────────────────<br>
-🗣️ LANGUAGES:<br>
-• Russian, Ukrainian (fluent)<br>
-• English (a bit)<br>
-─────────────────────────<br>
-🎮 HOBBIES:<br>
-• Video Games, Coding<br>
-🎶 MUSIC:<br>
-• Currently listening: Sektor Gaza (one of my favorite bands!)<br>
-─────────────────────────<br>
-💻 TECH:<br>
-• My loyal userbot: Heroku🪐<br>
-• Telegram Client: exteraGram [ exteraGram.app ]<br>
-─────────────────────────<br>
-🌐 CONTACTS:<br>
-• Telegram: @jvloq<br>
-─────────────────────────<br>
-💸 SUPPORT:<br>
-<div class="tinkoff-card" onclick="copyCard()">2200702031583094</div>
-─────────────────────────<br>
-🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!<br>
-<a class="tg-button" href="https://t.me/mcFimozzzzz" target="_blank">my channel</a>
+<div class="container">
+    <h1>⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀</h1>
+    <hr>
+    <p>🗣️ LANGUAGES:<br>• Russian, Ukrainian (fluent)<br>• English (a bit)</p>
+    <hr>
+    <p>🎮 HOBBIES:<br>• Video Games, Coding</p>
+    <p>🎶 MUSIC:<br>• Currently listening: Sektor Gaza</p>
+    <hr>
+    <p>💻 TECH:<br>• My loyal userbot: Heroku🪐<br>• Telegram Client: exteraGram [exteraGram.app]</p>
+    <hr>
+    <p>🌐 CONTACTS:<br>• Telegram: @jvloq</p>
+    <hr>
+    <p>💸 SUPPORT:<br>• <span id="copy-card" style="cursor:pointer; text-decoration: underline;">2200702031583094</span></p>
+    <hr>
+    <p>🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!</p>
+    <a href="https://t.me/mcFimozzzzz" target="_blank" class="tg-button">my channel</a>
+    <div class="message-box">
+        <span class="typing">root@kabachok:~$ саламчик =></span>
+    </div>
 </div>
-
-<div class="footer-message" id="footerMsg"></div>
-
+<audio autoplay loop>
+    <source src="dark-atmospheric.mp3" type="audio/mpeg">
+</audio>
 <script>
-    // Копирование карты в буфер
-    function copyCard() {
-        navigator.clipboard.writeText("2200702031583094");
-        alert("сябки 😋");
-    }
-
-    // Анимация печати сообщения внизу
-    const msg = "саламчик 😨";
-    const footer = document.getElementById("footerMsg");
-    let i = 0;
-    function typeMessage() {
-        if(i < msg.length){
-            footer.textContent += msg[i];
-            i++;
-            setTimeout(typeMessage, 150);
-        }
-    }
-    typeMessage();
+    const card = document.getElementById('copy-card');
+    card.addEventListener('click', () => {
+        navigator.clipboard.writeText(card.textContent);
+        alert('сябки😋');
+    });
 </script>
-
 </body>
 </html>
