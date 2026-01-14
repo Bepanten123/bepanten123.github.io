@@ -4,46 +4,60 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kabachok</title>
+
 <style>
-/* Фон */
 body {
     margin: 0;
     padding: 0;
-    font-family: monospace, monospace;
-    background-image: url('фон.jpg'); /* положи сюда свою картинку */
-    background-size: cover;
-    background-position: center;
+    font-family: monospace;
+    color: #00ff99;
+
+    background-image: url('фон.jpg');
+    background-size: contain;          /* ВАЖНО */
     background-repeat: no-repeat;
-    color: #00ff00;
-    line-height: 1.5;
-    animation: fadeIn 1.5s ease-in-out;
+    background-position: center top;
+    background-attachment: fixed;
+    background-color: #000;
+
+    animation: fadeIn 1.5s ease;
 }
 
-/* Плавное появление */
 @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-/* Центрирование контента */
 .container {
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: rgba(0,0,0,0.8); /* тёмный контейнер, чтобы текст читался */
-    border-radius: 10px;
+    max-width: 820px;
+    margin: 60px auto;
+    padding: 25px;
+    background: rgba(0,0,0,0.85);
+    border-radius: 12px;
 }
 
-/* Ссылки */
+/* Telegram кнопка */
+.tg-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #0088cc;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tg-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #0088cc;
+}
+
 a {
     color: #00ffff;
     text-decoration: none;
 }
-a:hover {
-    text-decoration: underline;
-}
 
-/* Мобильная адаптация */
 @media (max-width: 600px) {
     .container {
         margin: 20px;
@@ -52,30 +66,30 @@ a:hover {
 }
 </style>
 </head>
+
 <body>
 <div class="container">
 ⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀<br>
 ─────────────────────────<br>
 🗣️ LANGUAGES:<br>
-  • Russian, Ukrainian (fluent)<br>
-  • English (a bit)<br>
+• Russian, Ukrainian (fluent)<br>
+• English (a bit)<br>
 ─────────────────────────<br>
 🎮 HOBBIES:<br>
-  • Video Games, Coding<br>
+• Video Games, Coding<br>
 🎶 MUSIC:<br>
-  • Currently listening: Sektor Gaza (one of my favorite bands!)<br>
+• Currently listening: Sektor Gaza<br>
 ─────────────────────────<br>
 💻 TECH:<br>
-  • My loyal userbot: Heroku🪐<br>
-  • Telegram Client: exteraGram [ <a href="https://exteragram.app" target="_blank">exteraGram.app</a> ]<br>
+• My loyal userbot: Heroku🪐<br>
+• Telegram Client: <a href="https://exteragram.app" target="_blank">exteraGram</a><br>
 ─────────────────────────<br>
-🌐 CONTACTS:<br>
-  • Telegram: <a href="https://t.me/jvloq" target="_blank">@jvloq</a><br>
-─────────────────────────<br>
-💸 SUPPORT:<br>
-  • Tinkoff Bank: 2200702031583094<br>
-─────────────────────────<br>
-🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!<br>
+
+<a class="tg-btn" href="https://t.me/jvloq" target="_blank">
+🚀 Telegram
+</a>
+
 </div>
 </body>
 </html>
+
