@@ -24,7 +24,6 @@
         border: 3px solid #8a2be2; /* фиолетовая рамка */
         background-color: rgba(0,0,0,0.7);
         border-radius: 12px;
-        overflow: hidden; /* фикс вылазящего текста */
     }
 
     h1, h2, h3, p {
@@ -59,8 +58,6 @@
         text-decoration: none;
         border-radius: 8px;
         font-weight: bold;
-        position: relative;
-        z-index: 1;
     }
     .tg-button:hover {
         background: #6f1fb5;
@@ -81,6 +78,25 @@
         width: fit-content;
     }
 
+    /* Кастомный тост */
+    #toast {
+        visibility: hidden;
+        min-width: 200px;
+        background-color: #8a2be2;
+        color: #fff;
+        text-align: center;
+        border-radius: 8px;
+        padding: 10px;
+        position: fixed;
+        z-index: 9999;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: monospace;
+        font-size: 16px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
 </style>
 </head>
 <body>
@@ -97,7 +113,9 @@
     <hr>
     <p>🌐 CONTACTS:<br>• Telegram: @jvloq</p>
     <hr>
-    <p>💸 SUPPORT:<br>• <span id="copy-card" style="cursor:pointer; text-decoration: underline;">2200702031583094</span></p>
+    <p>💸 SUPPORT:<br>
+        <span id="copy-card" style="cursor:pointer; text-decoration: underline;">2200702031583094</span>
+    </p>
     <hr>
     <p>🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!</p>
 
@@ -109,29 +127,32 @@
 </div>
 
 <!-- Музыка на фоне -->
-<audio id="bgm" loop>
+<audio autoplay loop>
     <source src="dark-atmospheric.mp3" type="audio/mpeg">
 </audio>
 
+<!-- Кастомный тост для карты -->
+<div id="toast">сябки😋</div>
+
 <script>
-    const audio = document.getElementById("bgm");
+    // Копирование карты в буфер и кастомный тост
     const card = document.getElementById('copy-card');
+    const toast = document.getElementById('toast');
 
-    // Функция для запуска музыки (с любым кликом/тапом)
-    function startMusic() {
-        audio.volume = 0.7;
-        audio.play().catch(()=>{});
-        document.removeEventListener("click", startMusic);
-        document.removeEventListener("touchstart", startMusic);
-    }
-
-    document.addEventListener("click", startMusic, { once: true });
-    document.addEventListener("touchstart", startMusic, { once: true });
-
-    // Копирование карты в буфер
     card.addEventListener('click', () => {
         navigator.clipboard.writeText(card.textContent);
-        alert('сябки😋');
+
+        // Показать тост
+        toast.style.visibility = 'visible';
+        toast.style.opacity = '1';
+
+        // Скрыть через 2.5 секунды
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                toast.style.visibility = 'hidden';
+            }, 500);
+        }, 2500);
     });
 </script>
 
