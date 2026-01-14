@@ -13,7 +13,7 @@ body {
     color: #00ff99;
 
     background-image: url('фон.jpg');
-    background-size: contain;          /* ВАЖНО */
+    background-size: contain;         
     background-repeat: no-repeat;
     background-position: center top;
     background-attachment: fixed;
@@ -33,9 +33,9 @@ body {
     padding: 25px;
     background: rgba(0,0,0,0.85);
     border-radius: 12px;
+    line-height: 1.5;
 }
 
-/* Telegram кнопка */
 .tg-btn {
     display: inline-block;
     margin-top: 20px;
@@ -58,10 +58,42 @@ a {
     text-decoration: none;
 }
 
+/* Telegram-style message снизу */
+.tg-message {
+    margin-top: 30px;
+    padding: 15px;
+    background: #1e1e1e;
+    border-left: 4px solid #0088cc;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+    max-width: 400px;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
+/* Мигающий курсор */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    background-color: #00ff99;
+    margin-left: 2px;
+    animation: blink 1s step-start infinite;
+    vertical-align: bottom;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
 @media (max-width: 600px) {
     .container {
         margin: 20px;
         padding: 15px;
+    }
+    .tg-message {
+        max-width: 100%;
     }
 }
 </style>
@@ -78,18 +110,49 @@ a {
 🎮 HOBBIES:<br>
 • Video Games, Coding<br>
 🎶 MUSIC:<br>
-• Currently listening: Sektor Gaza<br>
+• Currently listening: Sektor Gaza (one of my favorite bands!)<br>
 ─────────────────────────<br>
 💻 TECH:<br>
 • My loyal userbot: Heroku🪐<br>
 • Telegram Client: <a href="https://exteragram.app" target="_blank">exteraGram</a><br>
 ─────────────────────────<br>
+🌐 CONTACTS:<br>
+• Telegram: <a href="https://t.me/jvloq" target="_blank">@jvloq</a><br>
+─────────────────────────<br>
+💸 SUPPORT:<br>
+• Tinkoff Bank: 2200702031583094<br>
+─────────────────────────<br>
+🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!<br>
 
 <a class="tg-btn" href="https://t.me/jvloq" target="_blank">
 🚀 Telegram
 </a>
 
+<!-- Сообщение как в ТГ -->
+<div class="tg-message" id="tgMessage"><span class="cursor"></span></div>
+
 </div>
+
+<script>
+// Эффект печатающегося текста с курсором
+const message = "💬 кабачок: салам 😈";
+let index = 0;
+const tgDiv = document.getElementById('tgMessage');
+const cursor = tgDiv.querySelector('.cursor');
+
+function typeWriter() {
+    if(index < message.length) {
+        tgDiv.textContent += message.charAt(index);
+        tgDiv.appendChild(cursor); // курсор всегда в конце
+        index++;
+        setTimeout(typeWriter, 100); // скорость печати
+    }
+}
+
+window.onload = () => {
+    setTimeout(typeWriter, 500); // задержка перед стартом печати
+};
+</script>
+
 </body>
 </html>
-
