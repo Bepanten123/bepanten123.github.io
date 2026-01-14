@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kabachok</title>
 <style>
+    /* Фон */
     body {
         margin: 0;
         padding: 0;
@@ -14,15 +15,23 @@
         color: #fff;
         overflow-x: hidden;
     }
+
+    /* Полупрозрачная тёмная окантовка */
     .container {
         max-width: 800px;
         margin: 50px auto;
         padding: 30px;
-        border: 3px solid #8a2be2;
+        border: 3px solid #8a2be2; /* фиолетовая рамка */
         background-color: rgba(0,0,0,0.7);
         border-radius: 12px;
+        overflow: hidden; /* фикс вылазящего текста */
     }
-    h1, h2, h3, p { margin: 10px 0; }
+
+    h1, h2, h3, p {
+        margin: 10px 0;
+    }
+
+    /* Анимация печати */
     .typing {
         display: inline-block;
         overflow: hidden;
@@ -31,8 +40,16 @@
         animation: typing 3s steps(30, end), blink .5s step-end infinite alternate;
         font-size: 18px;
     }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink { 50% { border-color: transparent; } }
+
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+    @keyframes blink {
+        50% { border-color: transparent; }
+    }
+
+    /* Кнопка TG */
     .tg-button {
         display: inline-block;
         margin-top: 20px;
@@ -42,9 +59,19 @@
         text-decoration: none;
         border-radius: 8px;
         font-weight: bold;
+        position: relative;
+        z-index: 1;
     }
-    .tg-button:hover { background: #6f1fb5; }
-    audio { display: none; }
+    .tg-button:hover {
+        background: #6f1fb5;
+    }
+
+    /* Музыка фон */
+    audio {
+        display: none;
+    }
+
+    /* Снизу сообщение */
     .message-box {
         margin-top: 30px;
         padding: 15px;
@@ -53,9 +80,11 @@
         border-radius: 6px;
         width: fit-content;
     }
+
 </style>
 </head>
 <body>
+
 <div class="container">
     <h1>⚔️ Vitalik | 17 y.o. | 🏴‍☠️ Adventure & Code Seeker! 🚀</h1>
     <hr>
@@ -71,20 +100,40 @@
     <p>💸 SUPPORT:<br>• <span id="copy-card" style="cursor:pointer; text-decoration: underline;">2200702031583094</span></p>
     <hr>
     <p>🤔 Why "kabachok" (zucchini)? Nobody knows, not even I!</p>
+
     <a href="https://t.me/mcFimozzzzz" target="_blank" class="tg-button">my channel</a>
+
     <div class="message-box">
         <span class="typing">root@kabachok:~$ саламчик =></span>
     </div>
 </div>
-<audio autoplay loop>
+
+<!-- Музыка на фоне -->
+<audio id="bgm" loop>
     <source src="dark-atmospheric.mp3" type="audio/mpeg">
 </audio>
+
 <script>
+    const audio = document.getElementById("bgm");
     const card = document.getElementById('copy-card');
+
+    // Функция для запуска музыки (с любым кликом/тапом)
+    function startMusic() {
+        audio.volume = 0.7;
+        audio.play().catch(()=>{});
+        document.removeEventListener("click", startMusic);
+        document.removeEventListener("touchstart", startMusic);
+    }
+
+    document.addEventListener("click", startMusic, { once: true });
+    document.addEventListener("touchstart", startMusic, { once: true });
+
+    // Копирование карты в буфер
     card.addEventListener('click', () => {
         navigator.clipboard.writeText(card.textContent);
         alert('сябки😋');
     });
 </script>
+
 </body>
 </html>
